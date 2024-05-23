@@ -1,8 +1,8 @@
 package com.study.java_study.ch02_클래스01;
 
 public class ObjectMain {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         int a = 10;
         ObjectA objectA1 = new ObjectA(); // 100번 주소
         ObjectA objectA2 = new ObjectA(); // 200번 주소

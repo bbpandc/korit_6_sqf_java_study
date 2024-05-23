@@ -1,8 +1,8 @@
 package com.study.java_study.ch03_함수;
 
 public class FunctionMain01 {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         Function01 function01 = new Function01();
 
         int result = function01.add(10, 2);

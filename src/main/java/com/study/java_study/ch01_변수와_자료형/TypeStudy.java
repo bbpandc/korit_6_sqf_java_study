@@ -1,8 +1,8 @@
 package com.study.java_study.ch01_변수와_자료형;
 
 public class TypeStudy {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         // [ 일반 자료형 ]
         // 1. 논리
         boolean a = false;

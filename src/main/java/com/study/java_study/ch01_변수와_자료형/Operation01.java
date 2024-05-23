@@ -1,8 +1,8 @@
 package com.study.java_study.ch01_변수와_자료형;
 
 public class Operation01 {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         // 연산자
 
         // 산술연산자
