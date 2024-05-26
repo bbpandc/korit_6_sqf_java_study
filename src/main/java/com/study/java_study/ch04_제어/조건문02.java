@@ -9,7 +9,7 @@ public class 조건문02 {
 
         System.out.println(text.length()); // 0
         System.out.println(name.length()); // 0
-        // System.out.println(phone.length()); // 런타임 오류 // 자료형이 null이기 때문에 .length를 못쓴다.
+//      System.out.println(phone.length()); // 런타임 오류 // 자료형이 null이기 때문에 .length를 못쓴다.
 
         StringUtils stringUtils = new StringUtils();
 
@@ -27,9 +27,9 @@ public class 조건문02 {
         }
 
         // text와 ""의 주소가 다르기 때문에 조건이 성립하지 않는다(출력 x).
-        // if(text == null || text == "") {
-        //     System.out.println("text가 비어있습니다.");
-        // }
+//      if(text == null || text == "") {
+//          System.out.println("text가 비어있습니다.");
+//      }
 
         if(stringUtils.isEmpty(text)) {
             System.out.println("text가 비어있습니다.");
