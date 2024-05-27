@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ArrayService {
 
     public static void main(String[] args) {
+        ArrayUtils arrayUtils = new ArrayUtils();
         Scanner scanner = new Scanner(System.in);
         String[] names = new String[0];
 
@@ -22,10 +23,13 @@ public class ArrayService {
 
             String selectMenu = scanner.nextLine();
 
+            String[] newNames = null;   // 각 case에서 공통으로 사용할 변수들
+            int findIndex = -1;         // switch문 밖에 한 번 선언해서 계속 사용한다.
+
             switch (selectMenu) {
                 case "1":
                     System.out.println("[이름 등록]");
-                    String[] newNames = new String[names.length + 1];
+                    newNames = new String[names.length + 1];
                     for(int i = 0; i < names.length; i++) {
                         newNames[i] = names[i];
                     }
@@ -36,74 +40,43 @@ public class ArrayService {
                     break;
                 case "2":
                     System.out.println("[이름 수정]");
-                    System.out.print("수정 하고 싶은 이름: ");
-                    String reName = scanner.nextLine();
-                    String result1 = null;
-                    for(String name : names) {
-                        if(name.equals(reName)) {
-                            result1 = name;
-                            break;
-                        }
-                    }
-                    if(result1 == null) {
-                        System.out.println("해당 이름은 존재하지 않는 이름입니다.");
+                    System.out.print("수정 할 이름: ");
+                    String modifyName = scanner.nextLine();
+                    findIndex = arrayUtils.findIndexByName(names, modifyName);
+                    if(findIndex == -1) {
+                        System.out.println("해당 이름은 존재하지 않습니다.");
                         break;
                     }
-                    System.out.print("수정 할 이름: ");
-                    String nameResult1 = scanner.nextLine();
-                    for(int i = 0; i < names.length; i++) {
-                        if(reName.equals(names[i])) {
-                            names[i] = nameResult1;
-                            break;
-                        }
-                    }
+                    System.out.print("새 이름: ");
+                    names[findIndex] = scanner.nextLine();
+                    System.out.println("수정 완료!");
                     break;
                 case "3":
                     System.out.println("[이름 삭제]");
-                    System.out.print("삭제 하고 싶은 이름: ");
-                    String delName = scanner.nextLine();
-                    String result2 = null;
-                    for(String name : names) {
-                        if(name.equals(delName)) {
-                            result2 = name;
-                            break;
-                        }
-                    }
-                    if(result2 == null) {
-                        System.out.println("해당 이름은 존재하지 않는 이름입니다.");
+                    System.out.print("삭제 할 이름: ");
+                    String removeName = scanner.nextLine();
+                    findIndex = arrayUtils.findIndexByName(names, removeName);
+                    if(findIndex == -1) {
+                        System.out.println("해당 이름은 존재하지 않습니다.");
                         break;
                     }
-                    String[] newArray = new String[names.length - 1];
-                    int index = 0;
-                    for(int i = 0; i < names.length; i++) {
-                        if(names[i].equals(result2)) {
-                            index = i;
-                            break;
+                    newNames = new String[names.length - 1];    // switch 문에서는 열리는 중괄호와 닫히는 중괄호 사이의 코드는 하나의 지역이다.
+                    for(int i = 0; i < newNames.length; i++) {  // 그래서 switch문 안에서 선언된 변수는 다른 case에서 못쓴다.
+                        if(i < findIndex) {                     // switch 문 안에서 같은 이름의 변수를 사용하려면 switch문 밖에 한 번 선언해서 쓴다.
+                            newNames[i] = names[i];
+                            continue;
                         }
+                        newNames[i] = names[i + 1];
                     }
-                    for(int i = 0; i < names.length; i++) {
-                        if(i < index) {
-                            newArray[i] = names[i];
-                        }
-                        else {
-                            newArray[i - 1] = names[i];
-                        }
-                    }
-                    System.out.println("삭제 완료");
-                    names = newArray;
+                    names = newNames;
+                    System.out.println(removeName + "을(를) 삭제하였습니다.");
                     break;
                 case "4":
                     System.out.println("[이름 찾기]");
                     System.out.print("조회 할 이름: ");
-                    String result3 = null;
                     String findName = scanner.nextLine();
-                    for(String name : names) {
-                        if(name.equals(findName)) {
-                            result3 = name;
-                            break;
-                        }
-                    }
-                    if(result3 == null) {
+                    findIndex = arrayUtils.findIndexByName(names, findName);
+                    if(findIndex == -1) {
                         System.out.println("해당 이름은 존재하지 않는 이름입니다.");
                         break;
                     }
