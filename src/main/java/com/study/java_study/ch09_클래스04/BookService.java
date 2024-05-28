@@ -68,7 +68,6 @@ public class BookService {
         while (true) {
             System.out.print(title + "명 입력: ");
             value = scanner.nextLine();
-            // .isBlank(): 공백을 포함하지x, .isEmpty(): 공백을 포함o
             if(!value.isBlank()) {
                 break;
             }
