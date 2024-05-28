@@ -60,7 +60,7 @@ public class BookArrayService {
                         break;
                     }
                     newBooks = new String[books.length - 1];
-                    for(int i = 0; i < newBooks.length;) {
+                    for(int i = 0; i < newBooks.length; i++) {
                         if(i < findIndex) {
                             newBooks[i] = books[i];
                             continue;
