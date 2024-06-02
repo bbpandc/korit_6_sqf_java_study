@@ -1,5 +1,7 @@
 package com.study.java_study.ch09_클래스04;
 
+import java.util.Arrays;
+
 // Repository: 저장소 -> CRUD가 이뤄짐
 public class BookRepository {
 
@@ -16,16 +18,16 @@ public class BookRepository {
 
     // saveBook에서만 쓰기 위해 private
     private void extendBooks() {
-        // 기존 배열보다 크기가 하나 더 큰 배열을 생성한다.
-        BookEntity[] newBooks = new BookEntity[books.length + 1];
-
-        // 기존 배열의 정보를 새로운 배열로 모두 옮긴다. 이 때 마지막 인덱스의 값은 빈값이다.
-        for(int i = 0; i < books.length; i++) {
-            newBooks[i] = books[i];
-        }
+//        // 기존 배열보다 크기가 하나 더 큰 배열을 생성한다.
+//        BookEntity[] newBooks = new BookEntity[books.length + 1];
+//
+//        // 기존 배열의 정보를 새로운 배열로 모두 옮긴다. 이 때 마지막 인덱스의 값은 빈값이다.
+//        for(int i = 0; i < books.length; i++) {
+//            newBooks[i] = books[i];
+//        }
 
         // 기존 배열의 주소가 들어있는 books 변수에 새로운 배열의 주소를 대입한다.
-        books = newBooks;
+        books = Arrays.copyOf(books, books.length + 1);
     }
 
     // 배열의 마지막 인덱스를 구하는 메소드
