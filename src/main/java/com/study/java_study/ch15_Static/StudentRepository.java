@@ -4,14 +4,14 @@ public class StudentRepository {
 
     private String[] names;
 
-    private static StudentRepository instance;
+    private static StudentRepository instance; // 싱글톤 필수 요소 // 자기 자신의 객체를 담는 static instance 변수
 
-    private StudentRepository() {
+    private StudentRepository() { // 싱글톤 필수 요소 // private 생성자
         names = new String[5];
     }
 
-    public static StudentRepository getInstance() {
-        if(instance == null) {
+    public static StudentRepository getInstance() { // 싱글톤 필수 요소 // 자기 자신의 객체를 생성할 수 있는
+        if(instance == null) {                      // static instance getter
             instance = new StudentRepository();
         }
         return instance;
